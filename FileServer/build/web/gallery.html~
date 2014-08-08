@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+	    .wrapperresult{
+		width:600px;
+                margin: 10px auto;
+                padding:10px;
+	    }
+	.main_image{
+		width:48%;
+		display:inline-block;
+		border:3px solid #eee;
+	}
+	.main_image img{
+		width:100%;
+	}
+	.selection_image{
+		width:48%;
+		display:inline-block;
+	}
+	.thumb {
+		position:relative; 
+		width:25%; 
+		height:15%; 
+		display:inline-block; 
+		margin:2px;
+		border:4px solid #eee;
+		outline:1px solid #ddd;
+		}
+	.thumb:hover .overlay {
+		opacity:0!important;
+		cursor:pointer;
+	}
+	.overlay {
+		position:absolute;
+		top:0;left:0;width:100%;height:100%;
+		background:#000;opacity:0.4;
+	}
+	.selection_image img {
+		width:100%;
+		height:100%;	
+	}
+    </style>
+</head>
+
+<body>
+	<script>
+	$(document).ready(function(){
+	    $('.thumb').hover(function(){
+		  $('.main_image img').attr('src',$(this).children('img').attr('src'));
+	    });
+	})
+	</script>
+	<!--<div class="wrapperresult">-->
+	<div class="gallery">
+		<div class="main_image">
+			<img src="http://imagedetector.com/uploads/3581378409560186.jpg" />
+		</div>
+	
+		<div class="selection_image">
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="http://imagedetector.com/uploads/3581378409560186.jpg" />
+			</div>
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="http://imagedetector.com/uploads/6261378409350914.jpg" />
+			</div>
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="http://imagedetector.com/uploads/6181378409715238.jpg" />
+			</div>
+			<!--<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="images/aston4.jpg" />
+			</div>
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="images/aston5.jpg" />
+			</div>
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="images/aston6.jpg" />
+			</div>
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="images/aston7.jpg" />
+			</div>
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="images/aston8.jpg" />
+			</div>
+			<div class="thumb">
+	    		     <div class="overlay"></div>
+	    		     <img src="images/aston9.jpg" />
+			</div>-->
+		</div>
+	</div>
+
+</body>
+</html>

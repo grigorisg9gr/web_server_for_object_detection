@@ -1,0 +1,317 @@
+<!-- August 18, 2013 
+captcha from: http://tympanus.net/codrops/2009/09/08/jquery-fancy-draggable-captcha/-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Image Detector</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+ 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script src="upload3.js"></script>
+        <style type="text/css">
+            body{
+                background-color: #2daebf;
+		text-align:center;
+
+            }
+            form.registration{
+		width:600px;
+                margin: 10px auto;
+                padding:10px;
+                font-family: "Trebuchet MS";   
+            }
+            fieldset{
+                background-color:#707070;
+                border:none;
+                padding:10px;
+                -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -moz-border-radius: 15px;
+                -webkit-border-radius: 15px;	
+		border-radius: 15px;			          
+                padding:6px;
+                margin:0px 30px 0px 0px;
+            }
+	    .wrapperresult{
+		width:600px;
+                margin: 10px auto;
+                padding:10px;
+		color:#fff;
+	    }
+            form.registration legend{
+                text-align:left;
+                color:#fff;
+                font-size:14px;
+                padding:0px 4px 15px 4px;
+                margin-left:20px;
+                font-weight:bold;
+            }
+            form.registration label{
+                font-size: 18px;
+                width:200px;
+                float: left;
+                text-align: right;
+                clear:left;
+                margin:4px 4px 0px 0px;
+                padding:0px;
+                color: #FFF;
+                text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+            }
+            form.registration input{
+                font-family: "Trebuchet MS";
+                font-size: 18px;
+                float:left;
+                width:300px;
+                border:1px solid #cccccc;
+                margin:0px 0px 4px 2px;
+                color:#00abdf;
+                height:26px;
+                padding:3px;
+                -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+		border-radius: 5px;
+            }
+            form.registration input:focus, form.registration select:focus{
+                background-color:#E0E6FF;
+            }
+            form.registration select{
+                font-family: "Trebuchet MS";
+                font-size: 20px;
+                float:left;
+                border:1px solid #cccccc;
+                margin-left:10%;margin-right:2%;margin-top:1px;
+                color:#00abdf;
+                height:32px;
+                -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+		border-radius: 5px;
+            }
+            .button, .button:visited{
+                float:right;
+                background: #cccccc url(images/overlay.png) repeat-x; 
+                font-weight:bold;
+                display: inline-block; 
+                padding: 5px 10px 6px; 
+                color: #fff; 
+                text-decoration: none;
+                -moz-border-radius: 5px; 
+                -webkit-border-radius: 5px;
+		border-radius: 5px;
+                -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+                border-bottom: 1px solid rgba(0,0,0,0.25);
+                cursor: pointer;
+                margin-top:95px;
+                margin-right:15px;
+            }
+            .button:hover{
+                background-color: #007d9a; 
+            }
+            #sortable {
+                list-style-type: none;
+                margin: 5px 0px 0px 16px;
+                padding: 0;
+            }
+            #sortable li {
+                margin: 3px 3px 3px 0;
+                padding: 1px;
+                float: left;
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+                text-align: center;
+                line-height:35px;
+                cursor:pointer;
+                -moz-border-radius:5px;
+                -webkit-border-radius:5px;
+		border-radius: 5px;
+                -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+                -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+                text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+                background:#2daebf url(images/overlay.png) repeat-x scroll 50% 50%;
+                color:#fff;
+                font-weight:normal;
+            }
+            .captcha_wrap{
+                border:1px solid #fff;
+                -moz-border-radius:10px;
+                -webkit-border-radius:10px;
+		border-radius: 10px;
+                -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                float:left;
+                height:120px;
+                overflow:auto;
+                width:150px;
+                overflow:hidden;
+                margin:0px 0px 0px 210px;
+                background-color:#fff;
+            }
+            .captcha{
+                -moz-border-radius:10px;
+                -webkit-border-radius:10px;
+		border-radius: 10px;
+                font-size:12px;
+                color:#BBBBBB;
+                text-align: center;
+                border-bottom:1px solid #CCC;
+                background-color:#fff;
+            }
+
+
+	  .mResult{ color:#000000; background-color:#fff;}
+	   input{color:#000000; background-color:#fff;}
+	  #status{color:red;}
+	  
+	  #whybt{width:20%;margin-left:38%;padding:2px;
+		background:#cccccc;color:#707070;
+	        -webkit-border-radius: 5px;
+	        -moz-border-radius: 5px;
+	        border-radius: 5px;}
+           #whybt:hover{
+                background-color: #007d9a; color:#fff;
+            }
+	  
+	  .wrapperresult .links{color:#fff;}
+	  .wrapperresult #title1{font-size:140%;text-decoration:underline;}
+	  .wrapperresult #steps{width:40%;margin-left:26%;text-align:left;}
+
+	   #progressbar{ width:570px;display:none;}
+	 .ui-progressbar {
+	position: relative;
+	}
+	.progress-label {
+	position: absolute;
+	left: 40%;
+	top: 4px;
+	font-weight: bold;
+	text-shadow: 1px 1px 0 #fff;
+	}
+	/*The following 3 lines for the changing colour of the progress bar (only)*/
+	.ui-progressbar.beginning .ui-progressbar-value { background: red; }
+	.ui-progressbar.middle .ui-progressbar-value { background: yellow; }
+	.ui-progressbar.end .ui-progressbar-value { background: green; }
+
+        </style>
+        <script type="text/javascript">
+	//for the captcha with the numbers
+            (
+            function($){
+
+                $.fn.shuffle = function() {
+                    return this.each(function(){
+                        var items = $(this).children();
+
+                        return (items.length)
+                            ? $(this).html($.shuffle(items,$(this)))
+                        : this;
+                    });
+                }
+
+                $.fn.validate = function() {
+                    var res = false;
+                    this.each(function(){
+                        var arr = $(this).children();
+                        res =    ((arr[0].innerHTML=="1")&&
+                            (arr[1].innerHTML=="2")&&
+                            (arr[2].innerHTML=="3")&&
+                            (arr[3].innerHTML=="4")&&
+                            (arr[4].innerHTML=="5")&&
+                            (arr[5].innerHTML=="6"));
+                    });
+                    return res;
+                }
+
+                $.shuffle = function(arr,obj) {
+                    for(
+                    var j, x, i = arr.length; i;
+                    j = parseInt(Math.random() * i),
+                    x = arr[--i], arr[i] = arr[j], arr[j] = x
+                );
+                    if(arr[0].innerHTML=="1") obj.html($.shuffle(arr,obj))
+                    else return arr;
+                }
+
+            })(jQuery);
+
+            $(function() {
+                $("#sortable").sortable();
+                $("#sortable").disableSelection();
+                $('ul#sortable').shuffle();
+
+                $("#submit").click(function(){
+                    ($('ul#sortable').validate()) ? sendFile() : alert("Please drag the numbers in order and then submit");
+                });
+            });
+	 //end of captcha code
+	 </script>
+    </head>
+    <body>
+	<div id="wrapper2">
+	<div class="wrapperresult">
+		<p id="title1"> Easy detection in 4 steps<p><ol id="steps">
+		<li>Choose a category</li>
+		<li>Choose the image</li>
+		<li>Drag the numbers in order and submit</li>
+		<li>Wait for the result and enjoy!</li></ol>
+	</div>
+        <form class="registration" enctype="multipart/form-data">
+	    <select id="cat">
+		<option value="person" selected="selected" data-imagesrc=""
+		    data-description="Description ">person</option>
+		<option value="dog" data-imagesrc=""
+		    data-description="Description ">dog</option>
+		<option value="sheep"  data-imagesrc=""
+		    data-description="Description with LinkedIn">sheep</option>
+		<option value="bird" data-imagesrc=""
+		    data-description="">bird</option>
+	    </select>
+
+	    <input type="file" id="filechooser" name="file">
+	    <p id="status"></p>
+            <fieldset>
+                <legend>Let's see if you are a human</legend>
+                <div class="captcha_wrap">
+                    <div class="captcha">
+			Drag to order
+                    </div>
+                    <ul id="sortable">
+                        <li class="captchaItem">1</li>
+                        <li class="captchaItem">2</li>
+                        <li class="captchaItem">3</li>
+                        <li class="captchaItem">4</li>
+                        <li class="captchaItem">5</li>
+                        <li class="captchaItem">6</li>
+                    </ul>
+                </div>
+                <a id="submit" class="button">Upload</a>
+            </fieldset>
+        </form>
+	<div class="wrapperresult">
+	    	<div id="progressbar"><div class="progress-label">Loading...</div><div></div></div>
+	    	<p id="whybt">See why</p>
+	    	<div id="why"></div>
+		<p id="resultIm"></p>
+		<br /><br />
+		<div class="mResult" id="messageForResult"></div>
+	</div>
+	<div class="wrapperresult">
+		<a id="terms" class="links" href="terms.html">Terms of use</a>
+		<a id="contact" class="links" href="contact.html">Contact us</a>
+	</div>
+	<script>
+		//load why page
+		$('p#whybt').click(function() {
+		   $('#why').load('why.html');
+		});
+        </script>
+	</div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+	    .wrapperresult{
+		width:600px;
+                margin: 10px auto;
+                padding:10px;
+	    }
+    </style>
+</head>
+
+<body>
+	<div class="wrapperresult">
+		<p> Wrong page (404)</p>
+		<a id="back" href="http://imagedetector.com/">Get back to the amazing imagedetector</a>
+		<p> There: </p>
+		<p>Easy detection in 4 steps</p><ul>
+		<li>Choose a category</li>
+		<li>Choose the image</li>
+		<li>Drag the numbers in order and submit</li>
+		<li>Wait for the result and enjoy!</li></ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        .box{width: 46%; vertical-align: top; display: inline-block; margin-bottom: 10px; }
+        .box img{width:25%; margin-right: 3%; float: left;}
+	.titleWhy{font-size:140%;text-decoration:underline;}
+    </style>
+</head>
+
+<body>
+    
+    <div class="box">
+        <!--<img src="images/slides/4.jpg">-->
+        <p>Fusce suscipit varius cumcis natoque penatibus etun magnidis parturient amet montes. Nascetur ridiculus nulla duim fusce feugiat alesda odio.</p>
+
+    </div>
+    <div class="box">
+         <!--<img src="images/slides/4.jpg">-->
+         <p>Fusce suscipit varius cumcis natoque penatibus etun magnidis parturient amet montes. Nascetur ridiculus nulla duim fusce feugiat alesda odio.</p>
+
+    </div>
+    <div class="box">
+         <!--<img src="images/slides/4.jpg">-->
+        <p class="titleWhy">In the cloud</p>
+	<p>You don't need to install any software in your device, you just upload it and we will do the rest for you.</p>
+
+    </div>
+    <div class="box">
+         <!--<img src="images/slides/4.jpg">-->
+        <p class="titleWhy">It's fun</p>
+	<p>You can try out with your different photos and see how the state of the art methods can track objects in them.</p>
+
+    </div>
+
+
+
+</body>
+</html>
