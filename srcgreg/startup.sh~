@@ -1,7 +1,0 @@
-#!/bin/bash
-
-cd /home/user/glassfish3/glassfish/bin/
-./asadmin start-domain domain1
-cd /home/user/srcgreg/
-#echo -e "yZChGhQ7VD\n" | sudo -S ./iptables.rules 
-
